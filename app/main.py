@@ -21,7 +21,7 @@ def registro():
     return render_template('registro.html')
 
 #Configuramos la ruta para la predicción
-@app.route('/usuario/prediccion')
+@app.route('/usuario/prediccion/felinos')
 def prediccion():
     #Renderizamos el template predicción
     return render_template('prediccion.html')
