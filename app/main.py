@@ -1,7 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 
 #Creamos una instancia de Flask y definimos la ruta static
 app = Flask(__name__, static_url_path='/static')
+
+#Configuramos la ruta raíz para redirigir al login
+@app.route('/')
+def root():
+    return redirect('/login')
 
 #Configuramos la ruta para el login
 @app.route('/login')
