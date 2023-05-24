@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Iniciar sesión</h2>
+            <form method="POST">
+                <!-- Campos para iniciar sesión -->
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes una cuenta? <a href="{{ url_for('registro') }}">Regístrate</a></p>
+        </div>
+    </body>
+</html>
