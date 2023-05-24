@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Predicción</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='prediccion.css') }}">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Reconocimiento de imágenes con IA</h2>
+            <form method="POST" enctype="multipart/form-data">
+                <!-- Campo para subir imagen -->
+                <input type="file" name="imagen" accept="image/*" required>
+                <button type="submit">Realizar predicción</button>
+            </form>
+            <div class="resultado">
+                {% if resultado %}
+                    <h3>Resultado:</h3>
+                    <!-- Para mostrar el resultado de la predicción -->
+                    <p>{{ resultado }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </body>
+</html>
