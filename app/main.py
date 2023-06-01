@@ -1,46 +1,21 @@
-from flask import Flask, render_template, redirect
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from config.config import *
+from routes.usuario import rutas_usuario            #Cargamos las rutas del usuario
+from routes.prediccion import rutas_prediccion      #Cargamos las rutas de las predicciones
 
 #Creamos una instancia de Flask y definimos la ruta static
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__)
 
-#Cargamos las configuraciones de la bd
-app.config.from_pyfile('./config/config.py')
-
-#Configuración de la base de datos
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql://{app.config['DB_USER']}:{app.config['DB_PASSWORD']}@{app.config['DB_HOST']}/{app.config['DB_NAME']}"
+#Configuramos la bd
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{USUARIO_BD}:{PASSWORD_BD}@{NOMBRE_HOST}/{NOMBRE_BD}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-#Creamos una instancia de SQLAlchemy
-db = SQLAlchemy(app)
+#Pasamos la instancia de app a SQLAlchemy
+SQLAlchemy(app)
 
-#Importamos los modelos
-from models.usuario import Usuario
-from models.prediccion import Prediccion
+#Agregamos las rutas del usuario a la aplicación
+app.register_blueprint(rutas_usuario)
 
-#Configuramos la ruta raíz para redirigir al login
-@app.route('/')
-def root():
-    return redirect('/login')
-
-#Configuramos la ruta para el login
-@app.route('/login')
-def login():
-    #Renderizamos el template login
-    return render_template('login.html')
-
-#Configuramos la ruta para el registro de usuarios
-@app.route('/registro/usuario')
-def registro():
-    #Renderizamos el template registro
-    return render_template('registro.html')
-
-#Configuramos la ruta para la predicción
-@app.route('/usuario/prediccion/felinos')
-def prediccion():
-    #Renderizamos el template predicción
-    return render_template('prediccion.html')
-
-if __name__ == '__main__':
-    #Inicializamos el servidor web
-    app.run()
+#Agregamos las rutas de las predicciones
+app.register_blueprint(rutas_prediccion)
