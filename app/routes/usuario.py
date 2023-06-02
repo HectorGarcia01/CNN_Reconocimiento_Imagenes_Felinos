@@ -36,17 +36,11 @@ def nuevo_usuario():
     #Retornamos la función para guardar el usuario en la db
     return guardar_usuario()
 
-#Configuramos la ruta para la vista/perfil
-@rutas_usuario.route('/vista/perfil')
-def vista_perfil():
-    #Retornamos la función verificar_sesion
-    return verificar_sesion()
-
 #Configuramos la ruta para ver el perfil del usuario
 @rutas_usuario.route('/usuario/perfil')
 def perfil_usuario():
-    #Renderizamos el template perfil
-    return render_template('perfil.html')
+    #Retornamos la función verificar_sesion
+    return verificar_sesion()
 
 #Configuramos la ruta para cerrar sesión
 @rutas_usuario.route('/usuario/logout')
