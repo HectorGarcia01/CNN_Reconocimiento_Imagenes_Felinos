@@ -48,3 +48,8 @@ def perfil_usuario():
     #Renderizamos el template perfil
     return render_template('perfil.html')
 
+#Configuramos la ruta para cerrar sesión
+@rutas_usuario.route('/usuario/logout')
+def cerrar_sesion():
+    #Retornamos la función logout_usuario
+    return logout_usuario()
