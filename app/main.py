@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config.config import URI_CONEXION_BD  #Cargamos la variable que posee la url de conexión
+from config.config import URI_CONEXION_BD  #Cargamos la constante que posee la url de conexión
 
 #Creamos una instancia de Flask y definimos la ruta static
 app = Flask(__name__)
