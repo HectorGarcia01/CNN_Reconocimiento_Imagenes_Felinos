@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, session
+from flask import request, render_template, redirect, session, flash
 from models.usuario import Usuario                              #Cargamos la clase Usuario
 
 #Definimos la función para validar las credenciales del usuario
@@ -19,6 +19,9 @@ def validar_credenciales():
             #Redireccionamos a la ruta para la predicción
             return redirect('/prediccion/felinos')
         else:
+            #Mostramos una alerta con SweetAlert2
+            flash('Las credenciales ingresadas no son válidas.', 'error')
+
             #Redireccionamos al mismo login
             return redirect('/login')
     except Exception as e:
@@ -29,6 +32,10 @@ def validar_credenciales():
 def verificar_sesion_pred():
     #Verificamos si en sesiones hay un id del usuario
     if not 'id_usuario' in session:
+        #Mostramos una alerta con SweetAlert2
+        flash('Primero debe de autenticarse.', 'error')
+
+        #Redireccionamos a la ruta login
         return redirect('/login')
     
     #Renderizamos el template predicción
