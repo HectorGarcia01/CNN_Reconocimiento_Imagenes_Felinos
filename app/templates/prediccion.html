@@ -4,23 +4,74 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Predicción</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='prediccion.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/prediccion.css') }}">
     </head>
     <body>
         <div class="container">
             <h2>Reconocimiento de imágenes con IA</h2>
-            <form method="POST" enctype="multipart/form-data">
-                <!-- Campo para subir imagen -->
-                <input type="file" name="imagen" accept="image/*" required>
-                <button type="submit">Realizar predicción</button>
-            </form>
-            <div class="resultado">
-                {% if resultado %}
-                    <h3>Resultado:</h3>
-                    <!-- Para mostrar el resultado de la predicción -->
-                    <p>{{ resultado }}</p>
-                {% endif %}
+            <div class="contenedor-imagen">
+                <form method="POST" enctype="multipart/form-data">
+                    <!-- Campo para subir imagen -->
+                    <div class="contenedor-input">
+                        <label for="imagen-input" class="imagen-label">Inserte Imagen</label>
+                        <input id="imagen-input" type="file" name="imagen" accept=".png, .jpg, .jpeg" required>
+                        <!-- <img id="imagen-miniatura" src="#" alt="Miniatura de la imagen" /> -->
+                    </div>
+                    <button type="submit">Realizar predicción</button>
+                </form>
+            </div>
+            <div class="contenedor-prediccion">
+                <h3>Resultado:</h3>
+                <div class="prediccion-item">
+                    <label for="leon-input">León</label>
+                    <div class="prediccion-nivel">
+                        <span class="nivel"></span>
+                    </div>
+                    <span class="prediccion-porcentaje">{{ porcentaje_leon }}</span>
+                </div>
+                <div class="prediccion-item">
+                    <label for="gato-input">Gato</label>
+                    <div class="prediccion-nivel">
+                        <span class="nivel"></span>
+                    </div>
+                    <span class="prediccion-porcentaje">{{ porcentaje_gato }}</span>
+                </div>
+                <div class="prediccion-item">
+                    <label for="tigre-input">Tigre</label>
+                    <div class="prediccion-nivel">
+                        <span class="nivel"></span>
+                    </div>
+                    <span class="prediccion-porcentaje">{{ porcentaje_tigre }}</span>
+                </div>
+                <div class="prediccion-item">
+                    <label for="pantera-input">Pantera</label>
+                    <div class="prediccion-nivel">
+                        <span class="nivel"></span>
+                    </div>
+                    <span class="prediccion-porcentaje">{{ porcentaje_pantera }}</span>
+                </div>
             </div>
         </div>
     </body>
 </html>
+
+<!-- <script>
+    // Obtener referencia al campo de entrada de archivos y la imagen miniatura
+    const inputImagen = document.getElementById('imagen-input');
+    const imagenMiniatura = document.getElementById('imagen-miniatura');
+
+    // Manejar el evento de cambio en el campo de entrada de archivos
+    inputImagen.addEventListener('change', function(event) {
+        document.getElementById('imagen-miniatura').style.display = 'block';
+
+        // Obtener el archivo seleccionado
+        const archivo = event.target.files[0];
+
+        // Crear un objeto URL para la imagen seleccionada
+        const urlImagen = URL.createObjectURL(archivo);
+
+        // Mostrar la miniatura de la imagen en la etiqueta <img>
+        imagenMiniatura.src = urlImagen;
+    });
+
+</script> -->
