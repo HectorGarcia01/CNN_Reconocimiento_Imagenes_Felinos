@@ -9,10 +9,10 @@
     <body>
         <div class="container">
             <h2>Iniciar sesión</h2>
-            <form method="POST">
+            <form action="/login/validar_usuario" method="POST">
                 <!-- Campos para iniciar sesión -->
                 <input type="email" name="correo" placeholder="Correo electrónico" required>
-                <input type="password" name="contrasena" placeholder="Contraseña" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <button type="submit">Iniciar Sesión</button>
             </form>
             <p>¿No tienes una cuenta? <a href="{{ url_for('usuario.registro') }}">Regístrate</a></p>
