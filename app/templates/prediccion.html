@@ -5,8 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Predicción</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/prediccion.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
     </head>
     <body>
+        {% include 'partials/_navbar.html' %}
+
         <div class="container">
             <h2>Reconocimiento de imágenes con IA</h2>
             <div class="contenedor-imagen">
@@ -53,25 +56,5 @@
             </div>
         </div>
     </body>
+    <script src="{{ url_for('static', filename='js/navbar.js') }}"></script>
 </html>
-
-<!-- <script>
-    // Obtener referencia al campo de entrada de archivos y la imagen miniatura
-    const inputImagen = document.getElementById('imagen-input');
-    const imagenMiniatura = document.getElementById('imagen-miniatura');
-
-    // Manejar el evento de cambio en el campo de entrada de archivos
-    inputImagen.addEventListener('change', function(event) {
-        document.getElementById('imagen-miniatura').style.display = 'block';
-
-        // Obtener el archivo seleccionado
-        const archivo = event.target.files[0];
-
-        // Crear un objeto URL para la imagen seleccionada
-        const urlImagen = URL.createObjectURL(archivo);
-
-        // Mostrar la miniatura de la imagen en la etiqueta <img>
-        imagenMiniatura.src = urlImagen;
-    });
-
-</script> -->
