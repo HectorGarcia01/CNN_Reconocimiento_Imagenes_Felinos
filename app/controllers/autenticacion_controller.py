@@ -32,3 +32,11 @@ def verificar_sesion():
     
     #Redireccionamos a la ruta para ver el perfil
     return redirect('/usuario/perfil')
+
+#Definimos una función para cerrar la sesión del usuario
+def logout_usuario():
+    #Borramos la sesión
+    session.pop('id_usuario', None)
+
+    #Redireccionamos a la ruta para cerrar sesión
+    return redirect('/login')
