@@ -1,7 +1,7 @@
 Swal.fire({
     icon: 'success',
     title: 'Solicitud exitosa',
-    text: mensaje_error,
+    text: mensaje_exitoso,
     showConfirmButton: false,
     timer: 2000,
     customClass: {
