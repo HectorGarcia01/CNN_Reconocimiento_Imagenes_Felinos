@@ -1,4 +1,4 @@
-from flask import request, redirect
+from flask import request, render_template, redirect, session
 from models.usuario import Usuario                              #Cargamos la clase Usuario
 from main import db                                             #Cargamos la instancia db
 
@@ -26,3 +26,26 @@ def guardar_usuario():
     except Exception as e:
         #Redireccionamos a la ruta para el registro de usuario
         return redirect('/registro/usuario')
+
+#Definimos una función para obtener los datos del usuario
+def obtener_usuario():
+    try:
+        #Verificamos si en sesiones hay un id del usuario
+        if not 'id_usuario' in session:
+            #Redireccionamos a la ruta del login
+            return redirect('/login')
+        
+        #Obtenemos el id del usuario de la sesión
+        id_usuario = session['id_usuario']
+
+        #Buscamos el usuario en la bd por su id
+        usuario = Usuario.query.get(id_usuario)
+
+        #Verificamos si se encontró un usuario
+        if usuario:
+                #Renderizamos el template perfil.html y pasamos los datos del usuario
+                return render_template('perfil.html', usuario=usuario)
+
+    except Exception as e:
+        #Redireccionamos a la ruta del login
+        return redirect('/login')
