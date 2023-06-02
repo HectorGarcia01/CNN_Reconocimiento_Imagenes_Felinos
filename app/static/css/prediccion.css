@@ -13,7 +13,7 @@
 .container {
     max-width: 600px;
     margin: 0 auto; /* Centrar horizontalmente */
-    margin-top: 15vh; /* Centrar verticalmente */
+    margin-top: 10vh; /* Centrar verticalmente */
     padding: 20px;
     background-color: #fff;
     border: 1px solid #000;
@@ -50,13 +50,6 @@
 input[type="file"] {
     display: none;
 }
-
-/* #imagen-miniatura {
-    display: none;
-    max-width: 200px; 
-    max-height: 200px;
-} */
-
 
 h2 {
     margin-top: 0;
