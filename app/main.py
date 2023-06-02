@@ -1,9 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config.config import URI_CONEXION_BD  #Cargamos la constante que posee la url de conexión
+from config.config import URI_CONEXION_BD, clave_secreta_flask  #Cargamos la constante que posee la url de conexión y la clave secreta de flask
 
 #Creamos una instancia de Flask y definimos la ruta static
 app = Flask(__name__)
+
+#Agregamos la clave secreta para el uso de sesiones
+app.secret_key = clave_secreta_flask
 
 #Configuramos la bd
 app.config['SQLALCHEMY_DATABASE_URI'] = URI_CONEXION_BD
