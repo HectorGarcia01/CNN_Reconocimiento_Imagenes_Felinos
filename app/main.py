@@ -1,12 +1,12 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from config.config import *
+from config.config import URI_CONEXION_BD  #Cargamos la variable que posee la url de conexión
 
 #Creamos una instancia de Flask y definimos la ruta static
 app = Flask(__name__)
 
 #Configuramos la bd
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://hector_garcia:47980664DD@localhost/prediccion_felinos'
+app.config['SQLALCHEMY_DATABASE_URI'] = URI_CONEXION_BD
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 #Pasamos la instancia de app a SQLAlchemy
