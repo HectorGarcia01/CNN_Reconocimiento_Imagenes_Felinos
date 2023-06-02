@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect
 from controllers.usuario_controller import guardar_usuario                  #Cargamos la función guardar_usuario del controlador
 from controllers.autenticacion_controller import validar_credenciales       #Cargamos la función validar_credenciales del controlador
-from controllers.autenticacion_controller import verificar_sesion           #Cargamos la función verificar_sesion del controlador
+from controllers.usuario_controller import obtener_usuario                  #Cargamos la función obtener_usuario del controlador
 from controllers.autenticacion_controller import logout_usuario             #Cargamos la función logout_user del controlador
 
 #Creamos la sección para las rutas de usuarios
@@ -39,8 +39,8 @@ def nuevo_usuario():
 #Configuramos la ruta para ver el perfil del usuario
 @rutas_usuario.route('/usuario/perfil')
 def perfil_usuario():
-    #Retornamos la función verificar_sesion
-    return verificar_sesion()
+    #Retornamos la función obtener_usuario
+    return obtener_usuario()
 
 #Configuramos la ruta para cerrar sesión
 @rutas_usuario.route('/usuario/logout')
