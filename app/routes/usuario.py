@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, redirect, request
-from controllers.usuario_controller import guardar_usuario, validar_credenciales      #Cargamos la función guardar_usuario y validar_credenciales del controlador
+from flask import Blueprint, render_template, redirect
+from controllers.usuario_controller import guardar_usuario                  #Cargamos la función guardar_usuario del controlador
+from controllers.autenticacion_controller import validar_credenciales       #Cargamos la función validar_credenciales del controlador
 
 #Creamos la sección para las rutas de usuarios
 rutas_usuario = Blueprint('usuario', __name__)
