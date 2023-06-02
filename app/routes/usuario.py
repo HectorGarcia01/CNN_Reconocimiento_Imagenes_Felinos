@@ -42,3 +42,9 @@ def vista_perfil():
     #Retornamos la función verificar_sesion
     return verificar_sesion()
 
+#Configuramos la ruta para ver el perfil del usuario
+@rutas_usuario.route('/usuario/perfil')
+def perfil_usuario():
+    #Renderizamos el template perfil
+    return render_template('perfil.html')
+
