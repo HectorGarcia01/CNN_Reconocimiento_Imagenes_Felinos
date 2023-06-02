@@ -1,7 +1,6 @@
-from flask import Blueprint #Para poder crear secciones dentro de la aplicación
-from flask import render_template #Para renderizar vistas
+from flask import Blueprint, render_template 
 
-#Creamos la sección para las rutas de usuarios
+#Creamos la sección para las rutas de predicción
 rutas_prediccion = Blueprint('prediccion', __name__)
 
 #Configuramos la ruta para la predicción
