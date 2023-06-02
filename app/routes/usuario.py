@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, redirect
 from controllers.usuario_controller import guardar_usuario                  #Cargamos la función guardar_usuario del controlador
 from controllers.autenticacion_controller import validar_credenciales       #Cargamos la función validar_credenciales del controlador
+from controllers.autenticacion_controller import verificar_sesion           #Cargamos la función verificar_sesion del controlador
+from controllers.autenticacion_controller import logout_usuario             #Cargamos la función logout_user del controlador
 
 #Creamos la sección para las rutas de usuarios
 rutas_usuario = Blueprint('usuario', __name__)
@@ -33,3 +35,10 @@ def registro():
 def nuevo_usuario():
     #Retornamos la función para guardar el usuario en la db
     return guardar_usuario()
+
+#Configuramos la ruta para la vista/perfil
+@rutas_usuario.route('/vista/perfil')
+def vista_perfil():
+    #Retornamos la función verificar_sesion
+    return verificar_sesion()
+
