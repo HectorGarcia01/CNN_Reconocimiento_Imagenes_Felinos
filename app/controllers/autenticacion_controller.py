@@ -1,4 +1,4 @@
-from flask import request, redirect, session
+from flask import request, render_template, redirect, session
 from models.usuario import Usuario                              #Cargamos la clase Usuario
 
 #Definimos la función para validar las credenciales del usuario
@@ -30,8 +30,16 @@ def verificar_sesion():
     if not 'id_usuario' in session:
         return redirect('/login')
     
-    #Redireccionamos a la ruta para ver el perfil
-    return redirect('/usuario/perfil')
+    #Renderizamos el template perfil
+    return render_template('perfil.html')
+
+#Definimos una función para verificar la sesión del usuario para la predicción
+def verificar_sesion_pred():
+    if not 'id_usuario' in session:
+        return redirect('/login')
+    
+    #Renderizamos el template predicción
+    return render_template('prediccion.html')
 
 #Definimos una función para cerrar la sesión del usuario
 def logout_usuario():
