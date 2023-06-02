@@ -1,4 +1,4 @@
-from flask import request, render_template, redirect, session
+from flask import request, render_template, redirect, session, flash
 from models.usuario import Usuario                              #Cargamos la clase Usuario
 from main import db                                             #Cargamos la instancia db
 
@@ -21,6 +21,9 @@ def guardar_usuario():
         #Finalizamos la conexión para que guarde el nuevo usuario a la bd
         db.session.commit()
 
+        #Mostramos una alerta con SweetAlert2
+        flash('Usuario creado con éxito.')
+
         #Redireccionamos a la ruta para el registro de usuario
         return redirect('/registro/usuario')
     except Exception as e:
@@ -32,6 +35,9 @@ def obtener_usuario():
     try:
         #Verificamos si en sesiones hay un id del usuario
         if not 'id_usuario' in session:
+            #Mostramos una alerta con SweetAlert2
+            flash('Primero debe de autenticarse.', 'error')
+
             #Redireccionamos a la ruta del login
             return redirect('/login')
         
