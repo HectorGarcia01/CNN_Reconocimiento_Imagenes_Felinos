@@ -4,24 +4,27 @@ from main import db                                             #Cargamos la ins
 
 #Definimmos la función para guardar los datos en la bd
 def guardar_usuario():
-    #Obtenemos los datos del formulario
-    nombre = request.form['nombre']
-    apellido = request.form['apellido']
-    direccion = request.form['direccion']
-    correo = request.form['correo']
-    password = request.form['password']
+    try:
+        #Obtenemos los datos del formulario
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        direccion = request.form['direccion']
+        correo = request.form['correo']
+        password = request.form['password']
 
-    #Instanciamos la clase Usuario para crear uno nuevo objeto
-    nuevo_usuario = Usuario(nombre, apellido, direccion, correo, password)
+        #Instanciamos la clase Usuario para crear uno nuevo objeto
+        nuevo_usuario = Usuario(nombre, apellido, direccion, correo, password)
 
-    #Guardamos el nuevo usuario
-    db.session.add(nuevo_usuario)
+        #Guardamos el nuevo usuario
+        db.session.add(nuevo_usuario)
 
-    #Finalizamos la conexión para que guarde el nuevo usuario a la bd
-    db.session.commit()
+        #Finalizamos la conexión para que guarde el nuevo usuario a la bd
+        db.session.commit()
 
-    #Redireccionamos a la ruta para el registro de usuario
-    return redirect('/registro/usuario')
+        #Redireccionamos a la ruta para el registro de usuario
+        return redirect('/registro/usuario')
+    except Exception as e:
+        return redirect('/registro/usuario')
 
 #Definimos la función para validar las credenciales del usuario
 def validar_credenciales():
