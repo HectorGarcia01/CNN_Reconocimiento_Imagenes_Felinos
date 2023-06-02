@@ -24,17 +24,10 @@ def validar_credenciales():
     except Exception as e:
         #Redireccionamos al mismo login
         return redirect('/login')
-    
-#Definimos una función para verificar la sesión del usuario
-def verificar_sesion():
-    if not 'id_usuario' in session:
-        return redirect('/login')
-    
-    #Renderizamos el template perfil
-    return render_template('perfil.html')
 
 #Definimos una función para verificar la sesión del usuario para la predicción
 def verificar_sesion_pred():
+    #Verificamos si en sesiones hay un id del usuario
     if not 'id_usuario' in session:
         return redirect('/login')
     
